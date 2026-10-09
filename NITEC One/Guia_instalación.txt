@@ -1,0 +1,37 @@
+# ?? Manual de Instalación y Ejecución: Agente Documentalista
+
+Este documento detalla los pasos para inicializar el sistema RAG (Generación Aumentada por Recuperación) de forma 100% local y privada.
+
+## ??? Fase 1: Instalación Base
+1. **Python 3.10+**: Descarga e instala Python. Al instalarlo, asegúrate de marcar la casilla **"Add Python to PATH"** en el instalador. Esto es vital para poder usar comandos desde cualquier terminal.
+2. **Ollama**: Descarga e instala el ejecutable desde su web oficial. Este será nuestro servidor local de inteligencia artificial.
+
+## ?? Fase 2: Descarga de Modelos Locales
+Abre tu terminal (Símbolo del sistema o PowerShell) y descarga las dos piezas centrales ejecutando:
+* `ollama run llama3.1`: Descarga el modelo lógico. Pesará unos 4.7 GB. Cuando termine de descargar y aparezca el chat de prueba, escribe `/bye` para salir.
+* `ollama pull nomic-embed-text`: Descarga el modelo matemático encargado de triturar el texto y convertirlo en vectores.
+
+## ?? Fase 3: Entorno Virtual (Aislamiento)
+Para evitar que las librerías choquen con otros programas de tu ordenador, crearemos una "burbuja" o entorno virtual. En la terminal, navega hasta tu carpeta `MI_PROYECTO_LICITACIONES` y ejecuta:
+1. `python -m venv venv` (Esto crea el entorno).
+2. `venv\Scripts\activate` en Windows, o `source venv/bin/activate` en Mac/Linux (Esto te introduce en el entorno. Sabrás que ha funcionado porque verás la palabra `(venv)` al inicio de tu línea de comandos).
+
+## ?? Fase 4: Instalación de Librerías
+Sin salir de la terminal y con el entorno activado, instalamos las herramientas específicas ejecutando:
+`pip install langchain langchain-community chromadb pypdf openpyxl`
+* *langchain*: Conecta los documentos con Llama 3.1.
+* *chromadb*: Nuestro motor de base de datos local.
+* *pypdf / openpyxl*: Herramientas para extraer el texto de PDFs y archivos Excel.
+
+## ??? Fase 5: Estructura Exacta del Proyecto
+Tu directorio debe verse exactamente así antes del paso final:
+
+MI_PROYECTO_LICITACIONES/
+??? 1_Archivos_Originales/   (Coloca aquí los archivos a procesar)
+??? agente.py                (Script de Ingesta)
+??? agente_documentalista.py (Script de Búsqueda)
+
+
+## ?? Fase 6: Ejecución
+1. **Paso A (Ingesta):** En la terminal (con el entorno activado), ejecuta `python agente.py`. El script leerá la carpeta de archivos y creará automáticamente la base de datos `bd_vectores`.
+2. **Paso B (Consulta):** Ejecuta `python agente_documentalista.py` para hacer tu pregunta y recibir la respuesta en formato JSON estructurado.
