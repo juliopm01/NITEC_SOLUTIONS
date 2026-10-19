@@ -1,0 +1,25 @@
+{
+  "entidad_publica": "Ayuntamiento de Málaga",
+  "limite_peso_mb_por_archivo": 15,
+  "regla_division": "Si supera el límite tras comprimir, dividir en volúmenes añadiendo '_Parte_X' al final del nombre.",
+  "estructura_carpetas": [
+    {
+      "nombre_carpeta": "Sobre_A_Administrativa",
+      "archivos_requeridos": [
+        {
+          "nombre_exacto": "01_Memoria_Proyecto.pdf",
+          "contiene": "Memoria justificativa y presupuesto"
+        }
+      ]
+    },
+    {
+      "nombre_carpeta": "Sobre_B_Tecnica",
+      "archivos_requeridos": [
+        {
+          "nombre_exacto": "02_Planos_Estructurales.pdf",
+          "contiene": "Planos del proyecto en formato A3"
+        }
+      ]
+    }
+  ]
+}
