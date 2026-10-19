@@ -1,7 +1,7 @@
 {
-  "entidad_publica": "Ayuntamiento de Málaga",
+  "entidad_publica": "Ayuntamiento de MÃ¡laga",
   "limite_peso_mb_por_archivo": 15,
-  "regla_division": "Si supera el límite tras comprimir, dividir en volúmenes añadiendo '_Parte_X' al final del nombre.",
+  "regla_division": "Si supera el lÃ­mite tras comprimir, dividir en volÃºmenes aÃ±adiendo '_Parte_X' al final del nombre.",
   "estructura_carpetas": [
     {
       "nombre_carpeta": "Sobre_A_Administrativa",
