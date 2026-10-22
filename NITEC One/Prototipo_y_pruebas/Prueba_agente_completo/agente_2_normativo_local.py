@@ -97,6 +97,28 @@ def contrastar_excepciones(municipio, contexto_local, limite_boja):
     except ValueError: return limite_boja
 
 def ejecutar_agente_2(municipio, tipo_proyecto, ruta_boja_pdf=None, limite_manual_mb=None):
+    print(f"⚖️ [Agente 2] Buscando normativa para el municipio: {municipio} (Proyecto: {tipo_proyecto})...")
+    
+    # 1. Comprobación directa de archivo JSON municipal (ej. normativa_marbella.json)
+    archivo_municipal = f"normativa_{municipio.replace(' ', '_').lower()}.json"
+    if os.path.exists(archivo_municipal):
+        print(f"   ✅ Encontrado archivo de normativa local directa: {archivo_municipal}")
+        try:
+            with open(archivo_municipal, "r", encoding="utf-8") as f:
+                datos = json.load(f)
+                if tipo_proyecto in datos.get("proyectos", {}):
+                    reglas_proyecto = datos["proyectos"][tipo_proyecto]
+                    limite_val = reglas_proyecto.get("limite_peso_mb", datos.get("limite_peso_mb", 20))
+                    formato_div = datos.get("formato_division", "09_99")
+                    return {
+                        "estado": "COMPLETADO",
+                        "reglas_empaquetado": {"limite_peso_mb": str(limite_val), "formato_division": formato_div},
+                        "reglas_identidad": reglas_proyecto
+                    }
+        except Exception as e:
+            print(f"   ⚠️ Error leyendo {archivo_municipal}: {e}")
+
+    # 2. Flujo original BOJA y ChromaDB si no hay JSON municipal directo
     if not os.path.exists(ARCHIVO_BOJA):
         if not ruta_boja_pdf or not os.path.exists(ruta_boja_pdf):
             return {"estado": "ERROR", "mensaje": "No existe boja_base.json y no se proporcionó un PDF válido."}
@@ -114,7 +136,6 @@ def ejecutar_agente_2(municipio, tipo_proyecto, ruta_boja_pdf=None, limite_manua
     contexto_ayuntamiento = consultar_normativa_local(municipio)
     
     if contexto_ayuntamiento == "NO_HAY_REGLAS_LOCALES":
-        # GUI READY: El Agente nunca interrumpe con input(). Devuelve un flag al orquestador.
         if limite_manual_mb is None:
             return {"estado": "REQUIERE_LIMITE_MANUAL", "mensaje": f"Falta límite local para {municipio}"}
         else:
