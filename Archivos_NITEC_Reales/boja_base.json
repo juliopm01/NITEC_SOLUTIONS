@@ -1,0 +1,10 @@
+{
+  "limite_peso_general_mb": 50,
+  "formato_division": "09_99",
+  "proyectos": {
+    "PGOM": {
+      "plantilla_nombre": "INE_PGOM_FT_AAAAMMDD",
+      "estructura_carpetas": {}
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "málaga": {
+    "provincia": "Málaga",
+    "comunidad": "Andalucía"
+  },
+  "marbella": {
+    "provincia": "Málaga",
+    "comunidad": "Andalucía"
+  },
+  "dos hermanas": {
+    "provincia": "Sevilla",
+    "comunidad": "Andalucía"
+  },
+  "sevilla": {
+    "provincia": "Sevilla",
+    "comunidad": "Andalucía"
+  },
+  "madrid": {
+    "provincia": "Madrid",
+    "comunidad": "Comunidad de Madrid"
+  },
+  "barcelona": {
+    "provincia": "Barcelona",
+    "comunidad": "Cataluña"
+  },
+  "valencia": {
+    "provincia": "Valencia",
+    "comunidad": "Comunidad Valenciana"
+  }
+}
