@@ -1,5 +1,6 @@
 import os
 import shutil
+import time
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_ollama import OllamaEmbeddings
@@ -10,15 +11,31 @@ RUTA_BD_PROYECTO = "./bd_vectores"
 def ingestar_proyecto(ruta_carpeta):
     print(f"⚙️ Construyendo base de datos del proyecto desde: {ruta_carpeta}")
     
-    # 1. Limpiamos la memoria del proyecto anterior
     if os.path.exists(RUTA_BD_PROYECTO):
         print("   🗑️ Borrando memoria anterior del proyecto...")
-        shutil.rmtree(RUTA_BD_PROYECTO)
+        for intento in range(3):
+            try:
+                shutil.rmtree(RUTA_BD_PROYECTO)
+                break
+            except PermissionError:
+                if intento < 2:
+                    time.sleep(1)
+                else:
+                    for root, dirs, files in os.walk(RUTA_BD_PROYECTO, topdown=False):
+                        for name in files:
+                            try:
+                                os.unlink(os.path.join(root, name))
+                            except:
+                                pass
+                        for name in dirs:
+                            try:
+                                os.rmdir(os.path.join(root, name))
+                            except:
+                                pass
         
     if not os.path.exists(ruta_carpeta):
         return {"estado": "ERROR", "mensaje": "La carpeta no existe."}
         
-    # 2. Escaneamos los PDFs
     archivos_pdf = [f for f in os.listdir(ruta_carpeta) if f.endswith('.pdf')]
     if not archivos_pdf:
         return {"estado": "ERROR", "mensaje": "No se encontraron PDFs."}
@@ -35,7 +52,6 @@ def ingestar_proyecto(ruta_carpeta):
     if not documentos:
         return {"estado": "ERROR", "mensaje": "No se pudo extraer texto."}
 
-    # 3. Troceamos y guardamos en ChromaDB
     guillotina = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     fragmentos = guillotina.split_documents(documentos)
     modelo_coordenadas = OllamaEmbeddings(model="nomic-embed-text")
