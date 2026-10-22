@@ -1,0 +1,18 @@
+{
+  "municipio": "Marbella",
+  "provincia": "Málaga",
+  "comunidad_autonoma": "Andalucía",
+  "limite_peso_mb": 15,
+  "proyectos": {
+    "ED": {
+      "limite_peso_mb": 15,
+      "formato_requerido": "PDF/A",
+      "observaciones": "Normativa específica del municipio de Marbella para Estudios de Detalle."
+    },
+    "PGOM": {
+      "limite_peso_mb": 20,
+      "formato_requerido": "PDF/A",
+      "observaciones": "Normativa general para Plan General."
+    }
+  }
+}
