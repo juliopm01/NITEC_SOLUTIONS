@@ -15,7 +15,7 @@ ARCHIVO_AYUNTAMIENTOS = "normativas_ayuntamientos.json"
 CARPETA_LEYES = "./normativas_pdf"
 RUTA_BD_LEGAL = "./bd_normativas"
 
-llm = ChatOllama(model="llama3.1", temperature=0)
+llm = ChatOllama(model="llama3.1", temperature=0, format="json")
 
 def _normalizar(texto):
     if not texto:
@@ -118,7 +118,15 @@ def analizar_indice_y_extraer_boja(ruta_pdf):
         Texto: {bloque_texto}""")
     ])
     
-    json_extraido_texto = (plantilla_extraccion | llm | StrOutputParser()).invoke({"bloque_texto": bloque_texto})
+    #json_extraido_texto = (plantilla_extraccion | llm | StrOutputParser()).invoke({"bloque_texto": bloque_texto})
+    #datos = _extraer_json_de_texto(json_extraido_texto)
+    json_extraido_texto = (
+    plantilla_extraccion | llm | StrOutputParser()
+    ).invoke({"bloque_texto": bloque_texto})
+    print("\n========== RESPUESTA BRUTA DE LLAMA 3.1 ==========")
+    print(repr(json_extraido_texto))
+    print("========== FIN DE RESPUESTA ==========\n")
+
     datos = _extraer_json_de_texto(json_extraido_texto)
 
     # Normalizar las claves de proyectos a mayúsculas

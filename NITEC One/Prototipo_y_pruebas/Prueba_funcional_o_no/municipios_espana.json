@@ -1,0 +1,70 @@
+{
+  "málaga": {
+    "provincia": "Málaga",
+    "comunidad": "Andalucía"
+  },
+  "marbella": {
+    "provincia": "Málaga",
+    "comunidad": "Andalucía"
+  },
+  "estepona": {
+    "provincia": "Málaga",
+    "comunidad": "Andalucía"
+  },
+  "mijas": {
+    "provincia": "Málaga",
+    "comunidad": "Andalucía"
+  },
+  "fuengirola": {
+    "provincia": "Málaga",
+    "comunidad": "Andalucía"
+  },
+  "vélez-málaga": {
+    "provincia": "Málaga",
+    "comunidad": "Andalucía"
+  },
+  "dos hermanas": {
+    "provincia": "Sevilla",
+    "comunidad": "Andalucía"
+  },
+  "sevilla": {
+    "provincia": "Sevilla",
+    "comunidad": "Andalucía"
+  },
+  "córdoba": {
+    "provincia": "Córdoba",
+    "comunidad": "Andalucía"
+  },
+  "granada": {
+    "provincia": "Granada",
+    "comunidad": "Andalucía"
+  },
+  "cádiz": {
+    "provincia": "Cádiz",
+    "comunidad": "Andalucía"
+  },
+  "huelva": {
+    "provincia": "Huelva",
+    "comunidad": "Andalucía"
+  },
+  "jaén": {
+    "provincia": "Jaén",
+    "comunidad": "Andalucía"
+  },
+  "almería": {
+    "provincia": "Almería",
+    "comunidad": "Andalucía"
+  },
+  "madrid": {
+    "provincia": "Madrid",
+    "comunidad": "Comunidad de Madrid"
+  },
+  "barcelona": {
+    "provincia": "Barcelona",
+    "comunidad": "Cataluña"
+  },
+  "valencia": {
+    "provincia": "Valencia",
+    "comunidad": "Comunidad Valenciana"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "OU_02": {
+    "attributes": {
+      "COD_INS": {
+        "type": "string",
+        "description": "Código del instrumento de ordenación urbanística"
+      },
+      "NOM_INS": {
+        "type": "string",
+        "description": "Identificación literal del instrumento de ordenación urbanística"
+      },
+      "NIVEL_INS": {
+        "type": "string",
+        "description": "Nivel del instrumento de ordenación urbanística"
+      },
+      "TIPO_INS": {
+        "type": "string",
+        "description": "Tipo de instrumento de ordenación urbanística"
+      },
+      "FECHA_AV": {
+        "type": "date",
+        "description": "Fecha en la que se ha aprobado el avance del instrumento de ordenación urbanística"
+      },
+      "FECHA_AI": {
+        "type": "date",
+        "description": "Fecha en la que se ha aprobado inicialmente el instrumento de ordenación urbanística"
+      },
+      "FECHA_AD": {
+        "type": "date",
+        "description": "Fecha en la que se ha aprobado definitivamente el instrumento de ordenación urbanística"
+      },
+      "NDOT_MN_EX": {
+        "type": "number",
+        "description": "Definición de la media ponderada de los niveles dotacionales existentes en las zonas de suelo urbano"
+      },
+      "NDOT_MN_OB": {
+        "type": "number",
+        "description": "Definición de la media ponderada de los niveles dotacionales objetivos de las zonas de suelo urbano"
+      },
+      "AREA": {
+        "type": "number",
+        "description": "Superficie del ámbito del instrumento de ordenación urbanística expresada en m²"
+      },
+      "OBSERV": {
+        "type": "string",
+        "description": "Observaciones que se estimen procedentes"
+      }
+    }
+  },
+  "proyectos": {
+    "ED": {
+      "plantilla_nombre": "INE_ED_FT_AAAAMMDD",
+      "estructura_carpetas": {}
+    }
+  },
+  "limite_peso_general_mb": 50,
+  "formato_division": "09_99",
+  "ruta_pdf_origen": "./normativas_pdf\\BOJA26-037-00054-2386-01_00333610.pdf"
+}

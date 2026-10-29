@@ -29,8 +29,11 @@ def comprobar_y_crear_bases_datos(ruta_carpeta_proyecto, ruta_pdf_normativa=None
 try:
     from agente_1_extractor import extraer_metadatos
     AGENTE_1_DISPONIBLE = True
-except ImportError:
-    AGENTE_1_DISPONIBLE = False
+except ModuleNotFoundError as e:
+    if e.name == "agente_1_extractor":
+        AGENTE_1_DISPONIBLE = False
+    else:
+        raise
 
 from agente_2_normativo_local import ejecutar_agente_2
 from geo_localizador import obtener_datos_geograficos
